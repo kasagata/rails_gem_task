@@ -1,0 +1,16 @@
+<%= search_form_for @q, url: url do |f| %>
+  <%= f.label "キーワード" %>
+  <%= f.search_field :title_or_description_cont %>
+
+  <%= f.label "期間" %>
+  <%= f.date_field :deadline_gteq %>
+  <span>~</span>
+  <%= f.date_field :deadline_lteq %>
+
+  <%= f.label :status %>
+  <%= f.radio_button :status_eq, '', {:checked => true} %>指定なし
+  <%= f.radio_button :status_eq, 0 %>todo
+  <%= f.radio_button :status_eq, 1 %>doing
+  <%= f.radio_button :status_eq, 2 %>done
+  <%= f.submit %>
+<% end %>
